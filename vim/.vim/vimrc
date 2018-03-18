@@ -1,0 +1,23 @@
+" Show Line Numbers on all files in VIM.
+set number relativenumber
+
+" Change color of Line Numbers
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+" Set default clipboard to X clipboard
+set clipboard=unnamedplus
+
+" Set Syntax Highlighting to On by default
+syntax on
+
+" Set list characters for tabs and spaces
+set list
+set listchars=tab:>·
+highlight SpecialKey ctermfg=DarkGrey guifg=DarkGrey
+
+" Change String Highlight to Green
+highlight string ctermfg=Green guifg=Green
+
+" Save Views on exit and load views on open
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview

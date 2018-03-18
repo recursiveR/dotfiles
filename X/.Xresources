@@ -1,0 +1,27 @@
+XTerm*faceName: noto mono
+Tilda*faceName: noto mono
+st*faceName: noto mono
+URxvt*faceName: font awesome
+!URxvt Variables
+
+!URxvt*transparent: true
+!URxvt*shading: 10
+
+URxvt*scrollBar: false
+URxvt*scrollBar_right: true
+URxvt*scrollstyle: rxvt
+URxvt*saveLines: 12000
+URxvt*internalBorder: 6
+
+! Default Theme
+#include ".Xresources.d/dark_theme"
+
+! Default Terminal Colors
+#include ".Xresources.d/hyper_blue"
+
+! Rofi Border Width
+rofi*bw: 2
+rofi*separator-style: solid
+!rofi*hide-scrollbar: false
+rofi*scrollbar-width: 2
+

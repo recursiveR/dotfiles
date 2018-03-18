@@ -1,0 +1,39 @@
+[global]
+	geometry = 248x124-10+34
+	shrink = no
+	transparency = 0
+	separator_height = 1
+	padding = 8
+	horizontal_padding = 8
+	frame_width = 1
+	frame_color = "#CCCCCC"
+	separator_color = frame
+	sort = yes
+	idle_threshold = 120
+	ignore_newline = no
+
+	# Text #
+	font = Roboto 11
+	line_height = 0
+	markup = full
+	alignment = center
+	word_wrap = yes
+
+[shortcuts]
+	close_all = ctrl+space
+	history = ctrl+grave
+
+[urgency_low]
+	background = "#252525"
+	foreground = "#CCCCCC"
+	timeout = 3
+
+[urgency_normal]
+	background = "#252525"
+	foreground = "#BBBBFF"
+	timeout = 5
+
+[urgency_critical]
+	background = "#252525"
+	foreground = "#E25147"
+	timeout = 0

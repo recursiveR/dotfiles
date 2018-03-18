@@ -1,0 +1,31 @@
+#define fg_var 		#F0DCC1
+#define fg_alt_var	#F0DCC1
+#define bg_var		#5A8490
+#define bg_alt_var	#5A8490
+#define accent_var	#D4AF37
+#define acc_fg_var	#721E14
+#define disabled_var	#A0A0A0
+#define urgent_var	#721E14
+
+! Colors
+*fg: 		fg_var
+*fg_alt: 	fg_alt_var
+*bg: 		bg_var
+*bg_alt:	bg_alt_var
+*primary:	primary_var
+*accent:	accent_var
+*acc_fg:	acc_fg_var
+*disabled:	disabled_var
+*urgent:	urgent_var
+
+! Other
+*label: 	
+*label-alt:	
+
+! Rofi Window Color (background, border color, separator color)
+rofi*color-window: bg_var, accent_var, bg_alt_var
+
+! Rofi Line Colors (bg, fg, bg-alt, highlight bg, highlight fg)
+rofi*color-normal: bg_var, fg_var, bg_var, accent_var, acc_fg_var
+rofi*color-urgent: bg_var, urgent_var, bg_var, bg_alt_var, urgent_var
+rofi*color-active: bg_alt_var, accent_var, bg_alt_var, accent_var, acc_fg_var
