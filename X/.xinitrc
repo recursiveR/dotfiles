@@ -1,2 +1,2 @@
-exec i3
+exec bspwm
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources

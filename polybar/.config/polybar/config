@@ -39,7 +39,7 @@ padding = 2
 module-margin = 1
 fixed-center = true
 
-modules-left = 	 i3 xkeyboard
+modules-left = 	 bspwm xkeyboard
 modules-center = date
 modules-right =  volume wlan battery powermenu
 
@@ -51,6 +51,27 @@ tray-background = ${self.accent}
 
 
 ; ======================================== Modules ========================================
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+enable-scroll = false
+label-focused-foreground = ${root.acc_fg}
+label-focused-background = ${root.accent}
+ws-icon-0 = terminal;
+ws-icon-1 = code;
+ws-icon-2 = web;
+ws-icon-3 = video;
+ws-icon-4 = free;
+
+
+format = <label-state>
+label-focused = "  %icon%  "
+label-urgent = ${self.label-focused}
+label-occupied = ${self.label-focused}
+label-empty = ${self.label-focused}
+
+
+
 [module/i3]
 type = internal/i3
 format = <label-state><label-mode>
