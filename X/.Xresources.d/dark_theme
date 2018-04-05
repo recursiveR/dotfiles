@@ -7,20 +7,6 @@
 #define disabled_var	#777777
 #define urgent_var	#E25147
 
-! Colors
-*fg: 		fg_var
-*fg_alt: 	fg_alt_var
-*bg: 		bg_var
-*bg_alt:	bg_alt_var
-*accent:	accent_var
-*acc_fg:	acc_fg_var
-*disabled:	disabled_var
-*urgent:	urgent_var
-
-! Other
-*label: 	
-*label-alt:	
-
 ! Rofi Window Color (background, border color, separator color)
 rofi*color-window: bg_var, accent_var, bg_alt_var
 

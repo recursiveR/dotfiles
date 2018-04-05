@@ -4,22 +4,51 @@
 
 # terminal emulator
 super + Return
-	st
+	urxvt
 
 # program launcher
 super + @space
 	rofi -show run
 
+# window switching menu
+super + Tab
+	rofi -show window
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# Fx Keys
+XF86MonBrightnessUp
+	xbacklight -inc 5
+XF86MonBrightnessDown
+	xbacklight -dec 5
+super + XF86MonBrightnessUp
+	xbacklight -set 100
+super + XF86MonBrightnessDown
+	xbacklight -set 1
+XF86KbdBrightnessUp
+	xbacklight -ctrl smc::kbd_backlight -inc 5
+XF86KbdBrightnessDown
+	xbacklight -ctrl smc::kbd_backlight -dec 5
+super + XF86KbdBrightnessUp
+	xbacklight -ctrl smc::kbd_backlight -set 100
+super + XF86KbdBrightnessDown
+	xbacklight -ctrl smc::kbd_backlight -set 1
+XF86AudioRaiseVolume
+	changeVolume.sh up
+XF86AudioLowerVolume
+	changeVolume.sh down
+XF86AudioMute
+	changeVolume.sh mute
+
 
 #
 # bspwm hotkeys
 #
 
 # quit bspwm normally
-super + alt + Escape
+super + shift  + Escape
 	bspc quit
 
 # close and kill

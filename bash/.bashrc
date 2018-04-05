@@ -27,7 +27,3 @@ export PS1="$hyperBlue\w$brown\$(__git_ps1)$green $ $reset"
 
 # Disable ctrl-s freezing terminal
 stty -ixon
-
-# Load Xmodmap
-xmodmap ~/.Xmodmap
-

@@ -1,5 +1,5 @@
 [global]
-	geometry = 248x124-10+34
+	geometry = 248x124-4+4
 	shrink = no
 	transparency = 0
 	separator_height = 1

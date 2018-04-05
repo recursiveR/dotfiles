@@ -12,7 +12,7 @@ syntax on
 
 " Set list characters for tabs and spaces
 set list
-set listchars=tab:>·
+set listchars=tab:>.
 highlight SpecialKey ctermfg=DarkGrey guifg=DarkGrey
 
 " Change String Highlight to Green

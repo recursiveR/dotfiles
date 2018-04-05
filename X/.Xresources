@@ -1,27 +1,52 @@
-XTerm*faceName: noto mono
-Tilda*faceName: noto mono
-st*faceName: noto mono
-URxvt*faceName: font awesome
-!URxvt Variables
+! URxvt Settings
+URxvt*faceName:		noto mono
+URxvt*boldFont:
+URxvt*scrollBar:	false
+URxvt*saveLines:	12000
+URxvt*internalBorder:	10
+URxvt*foreground:	#cccccc
+URxvt*background:	#202020
 
-!URxvt*transparent: true
-!URxvt*shading: 10
 
-URxvt*scrollBar: false
-URxvt*scrollBar_right: true
-URxvt*scrollstyle: rxvt
-URxvt*saveLines: 12000
-URxvt*internalBorder: 6
-
-! Default Theme
-#include ".Xresources.d/dark_theme"
-
-! Default Terminal Colors
-#include ".Xresources.d/hyper_blue"
-
-! Rofi Border Width
+! Rofi Settings
 rofi*bw: 2
 rofi*separator-style: solid
-!rofi*hide-scrollbar: false
 rofi*scrollbar-width: 2
+rofi*color-window: #202020, #0b76de, #303030
+rofi*color-normal: #202020, #cccccc, #202020, #0b76de, #eeeeee
+rofi*color-urgent: #202020, #e25147, #202020, #303030, #e25147
+rofi*color-active: #303030, #0b76de, #303030, #0b76de, #eeeeee
 
+
+! Terminal Colors
+! Black & DarkGrey
+*color0: #073642
+*color8: #002b36
+
+! DarkRed & Red
+*color1: #dc322f
+*color9: #cb4b16
+
+! DarkGreen & Green
+*color2: #859900
+*color10: #586e75
+
+! DarkYellow & Yellow
+*color3: #b58900
+*color11: #657b83
+
+! DarkBlue & Blue
+*color4: #268bd2
+*color12: #839496
+
+! DarkMagenta & Magenta
+*color5: #694e43
+*color13: #903232
+
+! DarkCyan & Cyan
+*color6: #2aa198
+*color14: #93a1a1
+
+! LightGrey & White
+*color7: #eee8d5
+*color15: #fdf6e3
