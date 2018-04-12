@@ -10,6 +10,9 @@ set clipboard=unnamedplus
 " Set Syntax Highlighting to On by default
 syntax on
 
+" Set vim to accept unicode character
+set encoding=utf-8
+
 " Set list characters for tabs and spaces
 set list
 set listchars=tab:>.

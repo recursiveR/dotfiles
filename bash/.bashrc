@@ -7,6 +7,8 @@
 
 alias ls='ls --color=auto'
 alias mutt='mutt -F ~/.config/mutt/muttrc'
+alias py='python3'
+alias jn='jupyter notebook'
 
 alias :q="echo This isn\'t VIM, asshat."
 alias :wq="echo This isn\'t VIM, asshat."

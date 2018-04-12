@@ -4,10 +4,14 @@
 
 # terminal emulator
 super + Return
-	urxvt
+	st
+
+# browser launcher
+super + shift + Return
+	firefox --private-window https://check.torproject.org
 
 # program launcher
-super + @space
+super + space
 	rofi -show run
 
 # window switching menu
@@ -36,11 +40,11 @@ super + XF86KbdBrightnessUp
 super + XF86KbdBrightnessDown
 	xbacklight -ctrl smc::kbd_backlight -set 1
 XF86AudioRaiseVolume
-	changeVolume.sh up
+	lemonVolume.sh up
 XF86AudioLowerVolume
-	changeVolume.sh down
+	lemonVolume.sh down
 XF86AudioMute
-	changeVolume.sh mute
+	lemonVolume.sh mute
 
 
 #
@@ -51,21 +55,13 @@ XF86AudioMute
 super + shift  + Escape
 	bspc quit
 
-# close and kill
-super + {_,shift + }q
-	bspc node -{c,k}
+# close
+super + shift + q
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
-
-# if the current node is automatic, send it to the last manual, otherwise pull the last leaf
-super + y
-	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
-
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest
 
 #
 # state/flags
