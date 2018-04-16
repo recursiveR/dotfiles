@@ -1,0 +1,67 @@
+#!/bin/sh
+
+create_wallpaper() {
+	# Create cache folder if it doesn't exist
+	[ -d $HOME/.cache/blurlock ] || mkdir -p $HOME/.cache/blurlock
+	WALLPAPER=$HOME/.cache/blurlock/wallpaper.png
+	convert $1 -resize 1440x900^ -blur 0x2 \
+		-fill '#20202099' \
+		-draw 'rectangle 0,765,275,830' \
+		$WALLPAPER
+}
+
+lock() {
+	background=cccccc10
+	foreground=ccccccff
+	accent=0b76deff
+	warning=e25147ff
+	i3lock \
+		-t \
+		-i "$HOME/.cache/blurlock/wallpaper.png" \
+		--force-clock \
+		--timepos="x+100:h-100" \
+		--timestr="%H:%M %Z" \
+		--timecolor=$foreground \
+		--datepos="tx:ty+20" \
+		--datecolor=$foreground \
+		--indpos="x+240:h-103" \
+		--radius=20 --ring-width=3 \
+		--line-uses-inside \
+		--keyhlcolor=$accent \
+		--bshlcolor=$warning \
+		--separatorcolor=$background \
+		--ringcolor=$foreground \
+		--insidecolor=$background \
+		--veriftext="" \
+		--ringvercolor=$accent \
+		--insidevercolor=$foreground \
+		--wrongtext="" \
+		--ringwrongcolor=$foreground \
+		--insidewrongcolor=$warning \
+		--noinputtext="" \
+		--indicator
+}
+
+case $1 in
+-w)
+	feh --bg-scale $2
+	create_wallpaper $2
+	;;
+--random)
+	case $2 in
+	'')
+		FILE=`find ~/.wallpapers/ -type f | shuf -n 1`
+		feh --bg-scale $FILE
+		create_wallpaper $FILE
+		;;
+	*)
+		FILE=`find $2 -type f | shuf -n 1`
+		feh --bg-scale $FILE
+		create_wallpaper $FILE
+		;;
+	esac
+	;;
+*)
+	lock
+	;;
+esac

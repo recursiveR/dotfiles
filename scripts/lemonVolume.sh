@@ -1,5 +1,11 @@
 #!/bin/sh
 
+BACKGROUND='#252525'
+FOREGROUND='#CCCCCC'
+ACCENT='#0b76de'
+DISABLED='#666666'
+DELAY=1
+
 volEcho() {
 	CURVOL=`amixer get Master | grep % | awk '{print $4}' | sed 's/[^0-9]//g'`
 	ROUNDVOL=$((CURVOL/10 + 1))
@@ -8,91 +14,68 @@ volEcho() {
 	do
 		if [ $i == $ROUNDVOL ]
 		then
-			echo -n "●"
+			echo -n "┃"
 		else
-			echo -n "―"
+			if [ $i -lt $ROUNDVOL ]
+			then
+				echo -n "%{F$ACCENT}━%{F-}"
+			else
+				echo -n "%{F$DISABLED}━%{F-}"
+			fi
 		fi
 		i=$((i+1))
 	done
 }
 
-volIncrease() {
-	while true; do
-		echo "%{c}%{F#bbbbff} %{F-} $(volEcho)"
-		sleep 3
-		pkill -o lemonbar
-		break
-	done
+volChange() {
+	case $1 in
+	increase)
+		VOLSTRING="%{c}  $(volEcho)"
+		;;
+	decrease)
+		VOLSTRING="%{c}  $(volEcho)"
+		;;
+	mute)
+		VOLSTRING="%{c}Mute"
+		;;
+	esac
+
+	echo $VOLSTRING
+	sleep $DELAY
+	pkill -o lemonbar
 }
 
-volDecrease() {
-	while true; do
-		echo "%{c}%{F#bbbbff} %{F-} $(volEcho)"
-		sleep 3
-		pkill -o lemonbar
-		break
-	done
-}
-
-volMute() {
-	while true; do
-		echo "%{c}%{F#bbbbff} %{F-} Mute"
-		sleep 3
-		pkill -o lemonbar
-		break
-	done
-}
-
-notifyUp() {
-	volIncrease | \
+volNotify() {
+	volChange $1 | \
 		lemonbar -d -p \
-		-g 110x30+1326+4 \
-		-f "Hack:pixelsize=10" \
-		-f "FontAwesome:size=9" \
-		-B \#252525 \
-		-F \#eeeeee
+		-g 140x30+1296+4 \
+		-f "DejaVu Sans Mono:size=10" \
+		-f "FontAwesome:size=12" \
+		-B $BACKGROUND \
+		-F $FOREGROUND
 }
 
-notifyDown() {
-	volDecrease | \
-		lemonbar -d -p \
-		-g 110x30+1326+4 \
-		-f "Hack:pixelsize=10" \
-		-f "FontAwesome:size=9" \
-		-B \#252525 \
-		-F \#eeeeee
-}
-
-notifyMute() {
-	volMute | \
-		lemonbar -d -p \
-		-g 110x30+1326+4 \
-		-f "Hack:pixelsize=10" \
-		-f "FontAwesome:size=9" \
-		-B \#252525 \
-		-F \#eeeeee
-}
 case $1 in 
 up)
 	amixer set Master on
 	amixer set Master 10%+
-	notifyUp
+	volNotify "increase"
 	;;
 down)
 	amixer set Master on
 	amixer set Master 10%-
-	notifyDown
+	volNotify "decrease"
 	;;
 mute)
 	amixer set Master toggle | grep % | awk '{print $6}' | sed 's/[^a-z\%]//g' | {
 		read -r status
 
-	if [ "$status" = off ]; then
-		notifyMute
-	fi
-	if [ "$status" = on ]; then
-		notifyUp
-	fi
+		if [ "$status" = off ]; then
+			volNotify "mute"
+		fi
+		if [ "$status" = on ]; then
+			volNotify "increase"
+		fi
 	}
 	;;
 esac

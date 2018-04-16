@@ -6,6 +6,10 @@
 super + Return
 	st
 
+# launch ranger in terminal
+super + e
+	st ranger
+
 # browser launcher
 super + shift + Return
 	firefox --private-window https://check.torproject.org
@@ -13,6 +17,14 @@ super + shift + Return
 # program launcher
 super + space
 	rofi -show run
+
+# clock bar
+super + shift + space
+	lemonClock.sh
+
+# kill lemonbar notifications
+super + ctrl + space
+	pkill lemonbar
 
 # window switching menu
 super + Tab
@@ -24,21 +36,21 @@ super + Escape
 
 # Fx Keys
 XF86MonBrightnessUp
-	xbacklight -inc 5
+	lemonBacklight.sh screen -inc 10
 XF86MonBrightnessDown
-	xbacklight -dec 5
+	lemonBacklight.sh screen -dec 10
 super + XF86MonBrightnessUp
-	xbacklight -set 100
+	lemonBacklight.sh screen -set 100
 super + XF86MonBrightnessDown
-	xbacklight -set 1
+	lemonBacklight.sh screen -set 1
 XF86KbdBrightnessUp
-	xbacklight -ctrl smc::kbd_backlight -inc 5
+	lemonBacklight.sh kbd -inc 10
 XF86KbdBrightnessDown
-	xbacklight -ctrl smc::kbd_backlight -dec 5
+	lemonBacklight.sh kbd -dec 10
 super + XF86KbdBrightnessUp
-	xbacklight -ctrl smc::kbd_backlight -set 100
+	lemonBacklight.sh kbd -set 100
 super + XF86KbdBrightnessDown
-	xbacklight -ctrl smc::kbd_backlight -set 1
+	lemonBacklight.sh kbd -set 1
 XF86AudioRaiseVolume
 	lemonVolume.sh up
 XF86AudioLowerVolume
@@ -52,7 +64,7 @@ XF86AudioMute
 #
 
 # quit bspwm normally
-super + shift  + Escape
+super + shift + Escape
 	bspc quit
 
 # close
