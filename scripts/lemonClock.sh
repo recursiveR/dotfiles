@@ -20,7 +20,7 @@ clockNotify() {
 
 clockNotify | \
 	lemonbar -d -p \
-	-g 270x30+585+0 \
+	-g 270x28+585+0 \
 	-f "Roboto Condensed:style=bold:size=10" \
 	-B $BACKGROUND \
 	-F $FOREGROUND

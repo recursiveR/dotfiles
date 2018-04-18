@@ -40,15 +40,17 @@ volChange() {
 		;;
 	esac
 
+	PID=`pgrep -n lemonbar`
 	echo $VOLSTRING
 	sleep $DELAY
-	pkill -o lemonbar
+	kill $PID
 }
 
 volNotify() {
 	volChange $1 | \
 		lemonbar -d -p \
-		-g 140x30+1296+4 \
+		-g 140x28+1296+4 \
+		-f "Roboto Condensed:style=bold:size=10" \
 		-f "DejaVu Sans Mono:size=10" \
 		-f "FontAwesome:size=12" \
 		-B $BACKGROUND \

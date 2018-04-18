@@ -48,18 +48,18 @@ blChange() {
 		ICON=
 		;;
 	esac
-	while true; do
-		echo "%{c}$ICON  $(blEcho $1)"
-		sleep $DELAY
-		pkill -o lemonbar
-		break
-	done
+
+	PID=`pgrep -n lemonbar`
+	echo "%{c}$ICON  $(blEcho $1)"
+	sleep $DELAY
+	kill $PID
 }
 
 blNotify() {
 	blChange $1 | \
 		lemonbar -d -p \
-		-g 140x30+1296+4 \
+		-g 140x28+1296+4 \
+		-f "Roboto Condensed:style=bold:size=10" \
 		-f "DejaVu Sans Mono:size=10" \
 		-f "FontAwesome:size=12" \
 		-B $BACKGROUND \
