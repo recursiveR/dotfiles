@@ -1,0 +1,199 @@
+; ======================================== Bars ========================================
+; -------------------- X Resources Bar --------------------
+[bar/default]
+; ----------- Bar Colors -----------
+foreground =	#CCCCCC
+fg_alt =		#CCCCCC
+background =	#252525 
+bg_alt =		#303030
+accent =		#0B76DE
+acc_fg =		#EEEEEE
+disabled =		#666666
+warning =		#E25147
+
+; ---------- Bar Variables ----------
+cursor-click = pointer
+
+; ---------- Bar Fonts ----------
+font-0 = "Noto Sans:style=Bold:size=8;2"
+font-1 = FontAwesome:size=10;2
+font-2 = "Noto Sans:size=9;2"
+font-3 = "DejaVu Sans:size=9.5;2"
+
+; ---------- Bar Settings ----------
+height = 16
+width = 100%
+line-size = 2
+padding = 2
+module-margin = 1
+fixed-center = true
+
+modules-left = 	 bspwm xkeyboard
+modules-center = date
+modules-right =  volume wlan battery
+
+; ---------- System Tray ----------
+tray-position = none
+tray-padding = ${self.padding}
+tray-background = ${self.accent}
+
+
+
+; ======================================== Modules ========================================
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = false
+enable-scroll = false
+
+label-focused = 
+label-focused-foreground = ${root.accent}
+label-focused-padding = ${root.padding}
+
+label-occupied = 
+label-occupied-padding = ${root.padding}
+
+label-empty = 
+label-empty-padding = ${root.padding}
+
+
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = <label-indicator>
+
+label-indicator-padding = ${root.padding}
+label-indicator-foreground = ${root.acc_fg}
+label-indicator-background = ${root.accent}
+
+
+
+[module/volume]
+type = internal/alsa
+
+format-volume = <label-volume><bar-volume>
+label-volume = ""
+
+format-muted = <label-muted><bar-volume>
+format-muted-foreground = ${root.disabled}
+label-muted = ${self.label-volume}
+
+ramp-volume-0 =  
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+bar-volume-width = 20
+bar-volume-indicator = ┃
+bar-volume-fill = ━
+bar-volume-empty = ━
+
+bar-volume-fill-foreground = ${root.accent}
+bar-volume-empty-foreground = ${root.disabled}
+
+
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+
+format-connected-foreground = ${root.foreground}
+label-connected = %{A1:toggleWifi.sh:}%{A3:wifiNotify.sh:}%{A}%{A}
+
+format-disconnected-foreground = ${root.disabled}
+label-disconnected = ${self.label-connected}
+
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+time-format = %H hrs %M min
+
+format-charging = <animation-charging>
+
+format-discharging = <ramp-capacity>
+
+label-full = %{A:batteryNotify.sh:}%{A}
+
+ramp-capacity-0 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-1 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-2 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-3 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-4 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-5 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-6 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-7 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-8 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-9 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-10 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-11 = %{A:batteryNotify.sh:}%{A}
+
+animation-charging-0 = %{A:batteryNotify.sh:}%{A}
+animation-charging-1 = %{A:batteryNotify.sh:}%{A}
+animation-charging-2 = %{A:batteryNotify.sh:}%{A}
+animation-charging-3 = %{A:batteryNotify.sh:}%{A}
+
+
+
+
+[module/date]
+type = internal/date
+
+time = %a, %b %d   %H:%M %Z
+time-alt =
+
+date =
+date-alt = Day %j, Week %W
+
+label = %time% %date%
+
+
+
+[module/terminal]
+type = custom/text
+content = 
+content-padding = ${root.padding}
+click-left = termite &
+click-right= urxvt &
+
+
+[module/editor]
+type = custom/text
+content = 
+content-padding = ${root.padding}
+click-left = termite -e vim
+
+
+[module/chromium]
+type = custom/text
+content = 
+content-padding = ${root.padding}
+click-left = chromium --incognito &
+click-right = chromium &
+
+
+
+[module/firefox]
+type = custom/text
+content = 
+content-padding = ${root.padding}
+click-left = firefox -private &
+click-right = firefox &
+
+
+
+[settings]
+screenchange-reload = true
+format-padding = ${root.padding}
+
+
+[global/wm]
+;margin-top = 5
+;margin-bottom = 5
