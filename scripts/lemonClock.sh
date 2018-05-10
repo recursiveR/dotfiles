@@ -7,7 +7,7 @@ DISABLED='#666666'
 DELAY=2
 
 clock() {
-	DATETIME=$(date '+%R %Z  %A, %B %d %Y')
+	DATETIME=$(date '+%R %Z  ·  %A, %B %d')
 	echo -n "$DATETIME"
 }
 
@@ -18,11 +18,16 @@ clockNotify() {
 	done
 }
 
+# Kill any already running lemonClock processes
+PID=`pgrep -n lemonClock.sh`
+while [ $PID != `pgrep -o lemonClock.sh` ]; do
+	pkill -o lemonClock.sh
+done
+
 clockNotify | \
 	lemonbar -d -p \
-	-g 270x28+585+0 \
-	-f "Roboto Condensed:style=bold:size=10" \
+	-g 260x28+590+0 \
+	-f "Noto Sans:style=bold:size=10" \
 	-B $BACKGROUND \
-	-F $FOREGROUND
-
-
+	-F $FOREGROUND \
+	-U $ACCENT

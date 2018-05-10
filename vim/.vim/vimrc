@@ -15,8 +15,12 @@ set encoding=utf-8
 
 " Set list characters for tabs and spaces
 set list
-set listchars=tab:>.
+set listchars=tab:>·
 highlight SpecialKey ctermfg=DarkGrey guifg=DarkGrey
+
+" Change tab size
+set tabstop=4
+set shiftwidth=4
 
 " Change String Highlight to Green
 highlight string ctermfg=Green guifg=Green
@@ -24,3 +28,6 @@ highlight string ctermfg=Green guifg=Green
 " Save Views on exit and load views on open
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
+
+" Set autoindent
+set autoindent

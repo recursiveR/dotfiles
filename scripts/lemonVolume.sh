@@ -1,16 +1,24 @@
 #!/bin/sh
 
+# Color variables
 BACKGROUND='#252525'
 FOREGROUND='#CCCCCC'
 ACCENT='#0b76de'
 DISABLED='#666666'
+
+# Time to wait before killing notification process
 DELAY=1
+
+# Notification labels
+UPLABEL=
+DOWNLABEL=$UPLABEL
+MUTELABEL=
 
 volEcho() {
 	CURVOL=`amixer get Master | grep % | awk '{print $4}' | sed 's/[^0-9]//g'`
-	ROUNDVOL=$((CURVOL/10 + 1))
+	ROUNDVOL=$((CURVOL/5 + 1))
 	i=1
-	while [ "$i" -lt 12 ]
+	while [ "$i" -lt 22 ]
 	do
 		if [ $i == $ROUNDVOL ]
 		then
@@ -30,13 +38,13 @@ volEcho() {
 volChange() {
 	case $1 in
 	increase)
-		VOLSTRING="%{c}  $(volEcho)"
+		VOLSTRING="%{c}$UPLABEL $(volEcho)"
 		;;
 	decrease)
-		VOLSTRING="%{c}  $(volEcho)"
+		VOLSTRING="%{c}$DOWNLABEL $(volEcho)"
 		;;
 	mute)
-		VOLSTRING="%{c}Mute"
+		VOLSTRING="%{c}$MUTELABEL $(volEcho)"
 		;;
 	esac
 
@@ -49,10 +57,9 @@ volChange() {
 volNotify() {
 	volChange $1 | \
 		lemonbar -d -p \
-		-g 140x28+1296+4 \
-		-f "Roboto Condensed:style=bold:size=10" \
-		-f "DejaVu Sans Mono:size=10" \
-		-f "FontAwesome:size=12" \
+		-g 300x40+570+430 \
+		-f "DejaVu Sans Mono:size=14" \
+		-f "FontAwesome:size=16" \
 		-B $BACKGROUND \
 		-F $FOREGROUND
 }

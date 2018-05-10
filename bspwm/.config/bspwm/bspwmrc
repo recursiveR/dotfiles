@@ -5,11 +5,13 @@ killall -q sxhkd
 while pgrep -u $UID -x sxhkd >/dev/null; do sleep 1; done
 sxhkd &
 
-
 # Start notification daemon
 killall -q dunst
 while pgrep -u $UID -x dunst >/dev/null; do sleep 1; done
 dunst &
+
+# Start light-locker
+light-locker &
 
 # Load background image
 ~/.fehbg
@@ -29,3 +31,4 @@ bspc config borderless_monocle		true
 bspc config gapless_monocle		true
 
 bspc rule -a Gimp desktop='^5' state=floating follow=on
+bspc rule -a barToggle.sh layer=above

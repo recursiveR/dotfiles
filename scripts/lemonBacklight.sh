@@ -20,9 +20,9 @@ blEcho() {
 		MAX=`cat $KEYBOARD/max_brightness`
 		;;
 	esac
-	let BRIGHTNESS=$LEVEL*100/$MAX/10
+	let BRIGHTNESS=$LEVEL*100/$MAX/5
 	i=0
-	while [ "$i" -lt 11 ]
+	while [ "$i" -lt 21 ]
 	do
 		if [ $i == $BRIGHTNESS ]
 		then
@@ -58,10 +58,9 @@ blChange() {
 blNotify() {
 	blChange $1 | \
 		lemonbar -d -p \
-		-g 140x28+1296+4 \
-		-f "Roboto Condensed:style=bold:size=10" \
-		-f "DejaVu Sans Mono:size=10" \
-		-f "FontAwesome:size=12" \
+		-g 300x40+570+430 \
+		-f "DejaVu Sans Mono:size=14" \
+		-f "FontAwesome:size=16" \
 		-B $BACKGROUND \
 		-F $FOREGROUND
 }

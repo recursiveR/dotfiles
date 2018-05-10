@@ -20,11 +20,11 @@ super + space
 
 # clock bar
 super + shift + space
-	lemonClock.sh
+	barToggle.sh
 
 # kill lemonbar notifications
 super + ctrl + space
-	pkill lemonbar
+	barOff.sh
 
 # window switching menu
 super + Tab
@@ -36,17 +36,17 @@ super + Escape
 
 # Fx Keys
 XF86MonBrightnessUp
-	lemonBacklight.sh screen -inc 10
+	lemonBacklight.sh screen -inc 5
 XF86MonBrightnessDown
-	lemonBacklight.sh screen -dec 10
+	lemonBacklight.sh screen -dec 5
 super + XF86MonBrightnessUp
 	lemonBacklight.sh screen -set 100
 super + XF86MonBrightnessDown
 	lemonBacklight.sh screen -set 1
 XF86KbdBrightnessUp
-	lemonBacklight.sh kbd -inc 10
+	lemonBacklight.sh kbd -inc 5
 XF86KbdBrightnessDown
-	lemonBacklight.sh kbd -dec 10
+	lemonBacklight.sh kbd -dec 5
 super + XF86KbdBrightnessUp
 	lemonBacklight.sh kbd -set 100
 super + XF86KbdBrightnessDown
@@ -119,7 +119,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '^{1-9,10}' && lemonDesktop.sh
 
 #
 # preselect
