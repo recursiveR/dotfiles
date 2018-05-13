@@ -4,7 +4,7 @@
 ; ----------- Bar Colors -----------
 foreground =	#CCCCCC
 fg_alt =		#CCCCCC
-background =	#252525 
+background =	#202020 
 bg_alt =		#303030
 accent =		#0B76DE
 acc_fg =		#EEEEEE
@@ -16,7 +16,7 @@ cursor-click = pointer
 
 ; ---------- Bar Fonts ----------
 font-0 = "Noto Sans:style=Bold:size=8;2"
-font-1 = FontAwesome:size=10;2
+font-1 = FontAwesome:size=9;2
 font-2 = "Noto Sans:size=9;2"
 font-3 = "DejaVu Sans:size=9.5;2"
 
@@ -28,7 +28,7 @@ padding = 2
 module-margin = 1
 fixed-center = true
 
-modules-left = 	 bspwm xkeyboard
+modules-left = bspwm xkeyboard
 modules-center = date
 modules-right =  volume wlan battery
 
@@ -43,6 +43,11 @@ tray-background = ${self.accent}
 [module/bspwm]
 type = internal/bspwm
 
+format = <label-state> <label-mode>
+
+label-monocole = M
+label-fullscreen = F
+
 enable-click = false
 enable-scroll = false
 
@@ -51,10 +56,10 @@ label-focused-foreground = ${root.accent}
 label-focused-padding = ${root.padding}
 
 label-occupied = 
-label-occupied-padding = ${root.padding}
+label-occupied-padding = ${self.label-focused-padding}
 
 label-empty = 
-label-empty-padding = ${root.padding}
+label-empty-padding = ${self.label-focused-padding}
 
 
 
@@ -101,7 +106,7 @@ type = internal/network
 interface = wlp3s0
 
 format-connected-foreground = ${root.foreground}
-label-connected = %{A1:toggleWifi.sh:}%{A3:wifiNotify.sh:}%{A}%{A}
+label-connected = %{A1:wifiNotify.sh:}%{A}
 
 format-disconnected-foreground = ${root.disabled}
 label-disconnected = ${self.label-connected}
