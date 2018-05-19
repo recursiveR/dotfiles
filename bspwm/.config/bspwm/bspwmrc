@@ -1,5 +1,14 @@
 #! /bin/sh
 
+# Load background image
+~/.fehbg
+
+# Start Polybar
+~/.config/polybar/launch.sh
+
+# Start light-locker
+light-locker &
+
 # Hotkeys
 killall -q sxhkd
 while pgrep -u $UID -x sxhkd >/dev/null; do sleep 1; done
@@ -9,15 +18,6 @@ sxhkd &
 killall -q dunst
 while pgrep -u $UID -x dunst >/dev/null; do sleep 1; done
 dunst &
-
-# Start light-locker
-light-locker &
-
-# Load background image
-~/.fehbg
-
-# Start Polybar
-~/.config/polybar/launch.sh
 
 bspc monitor eDP1 -d 1 2 3 4 5
 bspc monitor HDMI1 -d 6 7 8 9 0
@@ -35,3 +35,5 @@ bspc config gapless_monocle		true
 
 bspc rule -a Gimp desktop='^5' state=floating follow=on
 bspc rule -a barToggle.sh layer=above
+
+bspc rule -a scratchpad sticky=on state=floating layer=above hidden=on 

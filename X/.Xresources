@@ -32,12 +32,12 @@ rofi*color-active: #303030, #0b76de, #303030, #0b76de, #eeeeee
 *color10: #586e75
 
 ! DarkYellow & Yellow
-*color3: #b58900
-*color11: #657b83
+*color3: #ffff22
+*color11: #eeee44
 
 ! DarkBlue & Blue
-*color4: #268bd2
-*color12: #839496
+*color4: #346488
+*color12: #268bd2
 
 ! DarkMagenta & Magenta
 *color5: #694e43
