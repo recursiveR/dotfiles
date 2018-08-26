@@ -34,6 +34,7 @@ bspc config borderless_monocle		true
 bspc config gapless_monocle		true
 
 bspc rule -a Gimp desktop='^5' state=floating follow=on
+bspc rule -a Teamviewer state=floating follow=on
 bspc rule -a barToggle.sh layer=above
 
 bspc rule -a scratchpad sticky=on state=floating layer=above hidden=on 

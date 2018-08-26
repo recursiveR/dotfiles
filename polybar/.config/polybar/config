@@ -125,9 +125,11 @@ format-charging = <label-charging>
 
 format-discharging = <ramp-capacity>
 
+format-full = <label-full>
 label-full-foreground = ${root.accent}
 
 label-charging = " "
+label-full = ${self.label-charging}
 
 ramp-capacity-0 = %{A:batteryNotify.sh:}%{A}
 ramp-capacity-1 = %{A:batteryNotify.sh:}%{A}

@@ -50,6 +50,9 @@ XF86AudioLowerVolume
 XF86AudioMute
 	lemonVolume.sh mute
 
+# battery notification
+super + b
+	batteryNotify.sh
 
 #
 # bspwm hotkeys
