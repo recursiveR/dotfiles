@@ -2,35 +2,35 @@
 ; -------------------- X Resources Bar --------------------
 [bar/default]
 ; ----------- Bar Colors -----------
-foreground =	#CCCCCC
+foreground =	#EEEEEE
 fg_alt =		#CCCCCC
-background =	#202020 
+background =	#15202020
 bg_alt =		#303030
 accent =		#0B76DE
 acc_fg =		#EEEEEE
-disabled =		#666666
+disabled =		#888888
 warning =		#E25147
 
 ; ---------- Bar Variables ----------
 cursor-click = pointer
 
 ; ---------- Bar Fonts ----------
-font-0 = "Noto Sans:style=Bold:size=8;2"
-font-1 = FontAwesome:size=9;2
-font-2 = "Noto Sans:size=9;2"
-font-3 = "DejaVu Sans:size=9.5;2"
+font-0 = "Noto Sans:style=Bold:size=9;2"
+font-1 = FontAwesome:size=8;2
+font-2 = FontAwesome:size=11;4
+
 
 ; ---------- Bar Settings ----------
-height = 16
+height = 28
 width = 100%
 line-size = 2
 padding = 2
-module-margin = 1
+module-margin = 0
 fixed-center = true
 
-modules-left = bspwm xkeyboard
-modules-center = date
-modules-right =  volume wlan battery
+modules-left = pulseaudio xkeyboard
+modules-center = notifications
+modules-right = battery
 
 ; ---------- System Tray ----------
 tray-position = none
@@ -43,22 +43,20 @@ tray-background = ${self.accent}
 [module/bspwm]
 type = internal/bspwm
 
-format = <label-state> <label-mode>
+format = <label-state>
 
-label-monocole = M
-label-fullscreen = F
-
-enable-click = false
+enable-click = true
 enable-scroll = false
 
-label-focused = 
+label-focused = " "
 label-focused-foreground = ${root.accent}
 label-focused-padding = ${root.padding}
+label-focused-font = 2
 
-label-occupied = 
+label-occupied = " "
 label-occupied-padding = ${self.label-focused-padding}
 
-label-empty = 
+label-empty = " "
 label-empty-padding = ${self.label-focused-padding}
 
 
@@ -66,7 +64,7 @@ label-empty-padding = ${self.label-focused-padding}
 [module/xkeyboard]
 type = internal/xkeyboard
 
-format = <label-indicator>
+format = %{T3}<label-indicator>%{T-}
 
 label-indicator-padding = ${root.padding}
 label-indicator-foreground = ${root.acc_fg}
@@ -74,30 +72,28 @@ label-indicator-background = ${root.accent}
 
 
 
-[module/volume]
-type = internal/alsa
+[module/pulseaudio]
+type = internal/pulseaudio
 
-format-volume = <label-volume><bar-volume>
-label-volume = ""
+format-volume = <label-volume> <ramp-volume>
+label-volume = "%{T3} %{T-}"
+label-volume-foreground = ${root.foreground}
 
-format-muted = <label-muted><bar-volume>
-format-muted-foreground = ${root.disabled}
+format-muted = <label-muted> <ramp-volume>
 label-muted = ${self.label-volume}
+label-muted-foreground = ${root.disabled}
 
-ramp-volume-0 =  
-ramp-volume-1 = 
-ramp-volume-2 = 
-
-ramp-headphones-0 = 
-ramp-headphones-1 = 
-
-bar-volume-width = 20
-bar-volume-indicator = ┃
-bar-volume-fill = ━
-bar-volume-empty = ━
-
-bar-volume-fill-foreground = ${root.accent}
-bar-volume-empty-foreground = ${root.disabled}
+ramp-volume-0  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-1  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-2  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-3  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-4  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-5  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-6  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-7  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-8  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-9  = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-10 = %{A:batteryNotify.sh:}     %{A}
 
 
 
@@ -106,7 +102,7 @@ type = internal/network
 interface = wlp3s0
 
 format-connected-foreground = ${root.foreground}
-label-connected = %{A1:wifiNotify.sh:}%{A}
+label-connected = %{T3}%{A1:wifiNotify.sh:}  %{A}%{T-}
 
 format-disconnected-foreground = ${root.disabled}
 label-disconnected = ${self.label-connected}
@@ -119,30 +115,28 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-time-format = %H hrs %M min
+format-charging = <ramp-capacity> <label-charging>
+label-charging = "%{T3} %{T-}"
+label-charging-foreground = ${root.foreground}
 
-format-charging = <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = ${self.label-charging}
+label-discharging-foreground = ${root.disabled}
 
-format-discharging = <ramp-capacity>
-
-format-full = <label-full>
+format-full = <ramp-capacity> <label-full>
+label-full = ${self.label-charging}
 label-full-foreground = ${root.accent}
 
-label-charging = " "
-label-full = ${self.label-charging}
-
-ramp-capacity-0 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-1 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-2 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-3 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-4 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-5 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-6 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-7 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-8 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-9 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-10 = %{A:batteryNotify.sh:}%{A}
-ramp-capacity-11 = %{A:batteryNotify.sh:}%{A}
+ramp-capacity-0  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-1  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-2  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-3  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-4  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-5  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-6  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-7  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-8  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-9  = %{A:batteryNotify.sh:}     %{A}
 
 
 
@@ -159,42 +153,13 @@ label = %time% %date%
 
 
 
-[module/terminal]
-type = custom/text
-content = 
-content-padding = ${root.padding}
-click-left = termite &
-click-right= urxvt &
+[module/notifications]
+type = custom/script
 
+exec = head -n 1 /tmp/polybar-notify/notifications
+tail = false
+interval = 5
 
-[module/editor]
-type = custom/text
-content = 
-content-padding = ${root.padding}
-click-left = termite -e vim
-
-
-[module/chromium]
-type = custom/text
-content = 
-content-padding = ${root.padding}
-click-left = chromium --incognito &
-click-right = chromium &
-
-
-
-[module/firefox]
-type = custom/text
-content = 
-content-padding = ${root.padding}
-click-left = firefox -private &
-click-right = firefox &
-
-
-
-[settings]
-screenchange-reload = true
-format-padding = ${root.padding}
 
 
 [global/wm]
