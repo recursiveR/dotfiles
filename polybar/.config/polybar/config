@@ -140,25 +140,12 @@ ramp-capacity-9  = %{A:batteryNotify.sh:}     %{A}
 
 
 
-[module/date]
-type = internal/date
-
-time = %a, %b %d   %H:%M %Z
-time-alt =
-
-date =
-date-alt = Day %j, Week %W
-
-label = %time% %date%
-
-
-
 [module/notifications]
 type = custom/script
 
 exec = head -n 1 /tmp/polybar-notify/notifications
 tail = false
-interval = 5
+interval = 1
 
 
 

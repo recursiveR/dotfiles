@@ -1,16 +1,23 @@
 #!/bin/bash
 
-SELF='polybar-notifications-manager.sh'
+SELF='poly-notify.sh'
 TMPDIR='/tmp/polybar-notify'
 TIMERRESET="$TMPDIR/timer-reset"
 NOTIFICATIONSFILE="$TMPDIR/notifications"
 
-DELAY=5
+DELAY=2
 
 get_clock() {
 	DATETIME=$(date '+%A, %B %d  ·  %R %Z')
 	echo "$DATETIME"
 }
+
+# Check to make sure this is the only running script
+PID=`pgrep -n $SELF`
+if [ $PID -ne `pgrep -o $SELF` ]; then
+	echo "Process already running"
+	exit 1
+fi
 
 # Create Directory, Notifications File, and Timer Reset File
 mkdir -p $TMPDIR
@@ -23,6 +30,7 @@ echo $CURRENTTIME > $NOTIFICATIONSFILE
 
 # Start Management Loop
 while true; do
+	sleep 0.1
 	# Check for Timer Reset
 	if [ `head -n 1 $TIMERRESET` -eq 1 ]; then
 		SECONDS=0

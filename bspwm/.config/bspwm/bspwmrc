@@ -3,8 +3,12 @@
 # Load background image
 ~/.fehbg
 
+# Start Compositor
+compton &
+
 # Start Polybar
 ~/.config/polybar/launch.sh
+poly-notify.sh &
 
 # Start light-locker
 light-locker &
