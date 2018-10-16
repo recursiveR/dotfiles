@@ -24,6 +24,8 @@ super + Tab
 
 # make sxhkd reload its configuration files:
 super + Escape
+	echo "Reloading sxhkd" >> /tmp/polybar-notify/notifications
+	echo "1" > /tmp/polybar-notify/timer-reset
 	pkill -USR1 -x sxhkd
 
 # Fx Keys
@@ -52,7 +54,7 @@ XF86AudioMute
 
 # battery notification
 super + b
-	batteryNotify.sh
+	poly-notify-battery.sh
 
 #
 # bspwm hotkeys

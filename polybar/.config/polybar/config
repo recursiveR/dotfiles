@@ -145,7 +145,7 @@ type = custom/script
 
 exec = head -n 1 /tmp/polybar-notify/notifications
 tail = false
-interval = 1
+interval = 0.2
 
 
 

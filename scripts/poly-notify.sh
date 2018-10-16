@@ -5,7 +5,7 @@ TMPDIR='/tmp/polybar-notify'
 TIMERRESET="$TMPDIR/timer-reset"
 NOTIFICATIONSFILE="$TMPDIR/notifications"
 
-DELAY=2
+DELAY=3
 
 get_clock() {
 	DATETIME=$(date '+%A, %B %d  ·  %R %Z')
@@ -30,7 +30,7 @@ echo $CURRENTTIME > $NOTIFICATIONSFILE
 
 # Start Management Loop
 while true; do
-	sleep 0.1
+	sleep 0.01
 	# Check for Timer Reset
 	if [ `head -n 1 $TIMERRESET` -eq 1 ]; then
 		SECONDS=0
@@ -41,7 +41,6 @@ while true; do
 	if [ $SECONDS -ge $DELAY ]; then
 		# If the current notification is the last notification, add a new time line
 		if [ `cat $NOTIFICATIONSFILE | wc -l` -le 1 ]; then
-			echo "Notifications Low"
 			CURRENTTIME=$(get_clock)
 			echo $CURRENTTIME >> $NOTIFICATIONSFILE
 		fi
