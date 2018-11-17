@@ -2,7 +2,7 @@
 ; -------------------- X Resources Bar --------------------
 [bar/default]
 ; ----------- Bar Colors -----------
-foreground =	#EEEEEE
+foreground =	#FEFEFE
 fg_alt =		#CCCCCC
 background =	#15202020
 bg_alt =		#303030
@@ -25,10 +25,10 @@ height = 28
 width = 100%
 line-size = 2
 padding = 2
-module-margin = 0
+module-margin = 2
 fixed-center = true
 
-modules-left = pulseaudio xkeyboard
+modules-left = pulseaudio xkeyboard  
 modules-center = notifications
 modules-right = battery
 
@@ -66,6 +66,7 @@ type = internal/xkeyboard
 
 format = %{T3}<label-indicator>%{T-}
 
+label-indicator = 
 label-indicator-padding = ${root.padding}
 label-indicator-foreground = ${root.acc_fg}
 label-indicator-background = ${root.accent}
@@ -83,17 +84,17 @@ format-muted = <label-muted> <ramp-volume>
 label-muted = ${self.label-volume}
 label-muted-foreground = ${root.disabled}
 
-ramp-volume-0  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-1  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-2  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-3  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-4  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-5  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-6  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-7  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-8  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-9  = %{A:batteryNotify.sh:}     %{A}
-ramp-volume-10 = %{A:batteryNotify.sh:}     %{A}
+ramp-volume-0  =      
+ramp-volume-1  =      
+ramp-volume-2  =      
+ramp-volume-3  =      
+ramp-volume-4  =      
+ramp-volume-5  =      
+ramp-volume-6  =      
+ramp-volume-7  =      
+ramp-volume-8  =      
+ramp-volume-9  =      
+ramp-volume-10 =      
 
 
 
@@ -123,21 +124,22 @@ format-discharging = <ramp-capacity> <label-discharging>
 label-discharging = ${self.label-charging}
 label-discharging-foreground = ${root.disabled}
 
-format-full = <ramp-capacity> <label-full>
+format-full =       <label-full>
 label-full = ${self.label-charging}
 label-full-foreground = ${root.accent}
+
+ramp-capacity-0-foreground = ${root.warning}
 
 ramp-capacity-0  = %{A:batteryNotify.sh:}     %{A}
 ramp-capacity-1  = %{A:batteryNotify.sh:}     %{A}
 ramp-capacity-2  = %{A:batteryNotify.sh:}     %{A}
-ramp-capacity-3  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-3  = %{A:batteryNotify.sh:}     %{A}
 ramp-capacity-4  = %{A:batteryNotify.sh:}     %{A}
-ramp-capacity-5  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-5  = %{A:batteryNotify.sh:}     %{A}
 ramp-capacity-6  = %{A:batteryNotify.sh:}     %{A}
-ramp-capacity-7  = %{A:batteryNotify.sh:}     %{A}
+ramp-capacity-7  = %{A:batteryNotify.sh:}     %{A}
 ramp-capacity-8  = %{A:batteryNotify.sh:}     %{A}
-ramp-capacity-9  = %{A:batteryNotify.sh:}     %{A}
-
+ramp-capacity-9  = %{A:batteryNotify.sh:}     %{A}
 
 
 [module/notifications]
